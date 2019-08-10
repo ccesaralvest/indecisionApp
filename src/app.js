@@ -24,7 +24,7 @@ var template = (
 // Person Data Object
 var user = {
     name: 'Caio Timoteo',
-    age: 28,
+    age: 18,
     location: 'Brazil'
 };
 
@@ -33,11 +33,10 @@ var templateTwo = (
     <div>
         <h1>User Data</h1>
         <p><b>Name:</b> {user.name ? user.name : 'Not found'}</p>
-        <p><b>Age:</b> {user.age ? user.age : 'Not found'}</p>
+        {(user.age && user.age >= 18) && <p><b>Age:</b> {user.age} </p>}
         <p><b>Location:</b> {user.location ? user.location : 'Not Found'}</p>
     </div>
 );
-
 
 // React Render DOM
 ReactDOM.render(templateTwo, appWraper);

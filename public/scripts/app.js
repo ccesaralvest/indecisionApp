@@ -44,7 +44,7 @@ var template = React.createElement(
 // Person Data Object
 var user = {
     name: 'Caio Timoteo',
-    age: 28,
+    age: 18,
     location: 'Brazil'
 };
 
@@ -68,7 +68,7 @@ var templateTwo = React.createElement(
         ' ',
         user.name ? user.name : 'Not found'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         React.createElement(
@@ -77,7 +77,8 @@ var templateTwo = React.createElement(
             'Age:'
         ),
         ' ',
-        user.age ? user.age : 'Not found'
+        user.age,
+        ' '
     ),
     React.createElement(
         'p',
