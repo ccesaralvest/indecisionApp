@@ -31,11 +31,13 @@ var user = {
 // Template user
 var templateTwo = (
     <div>
-        <h1>{user.name ? user.name : 'User Name - Not found'}</h1>
-        <p>{user.age ? user.age : 'User Age - Not found'}</p>
+        <h1>User Data</h1>
+        <p><b>Name:</b> {user.name ? user.name : 'Not found'}</p>
+        <p><b>Age:</b> {user.age ? user.age : 'Not found'}</p>
+        <p><b>Location:</b> {user.location ? user.location : 'Not Found'}</p>
     </div>
 );
 
 
 // React Render DOM
-ReactDOM.render(template, appWraper);
+ReactDOM.render(templateTwo, appWraper);

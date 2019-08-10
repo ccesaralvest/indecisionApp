@@ -55,14 +55,42 @@ var templateTwo = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name ? user.name : 'User Name - Not found'
+        'User Data'
     ),
     React.createElement(
         'p',
         null,
-        user.age ? user.age : 'User Age - Not found'
+        React.createElement(
+            'b',
+            null,
+            'Name:'
+        ),
+        ' ',
+        user.name ? user.name : 'Not found'
+    ),
+    React.createElement(
+        'p',
+        null,
+        React.createElement(
+            'b',
+            null,
+            'Age:'
+        ),
+        ' ',
+        user.age ? user.age : 'Not found'
+    ),
+    React.createElement(
+        'p',
+        null,
+        React.createElement(
+            'b',
+            null,
+            'Location:'
+        ),
+        ' ',
+        user.location ? user.location : 'Not Found'
     )
 );
 
 // React Render DOM
-ReactDOM.render(template, appWraper);
+ReactDOM.render(templateTwo, appWraper);
