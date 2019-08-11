@@ -8,7 +8,8 @@ var appWraper = document.getElementById('app');
 // App Data Object
 var app = {
     title: 'Indecision App',
-    subTitle: 'Put your life in the hands of a computer'
+    subTitle: 'Put your life in the hands of a computer',
+    options: ['one', 'two']
 };
 
 // First Template App
@@ -18,12 +19,17 @@ var template = React.createElement(
     React.createElement(
         'h1',
         null,
-        app.title ? app.title : 'Title - Not found'
+        app.title
+    ),
+    app.subTitle && React.createElement(
+        'p',
+        null,
+        app.subTitle
     ),
     React.createElement(
-        'h2',
+        'p',
         null,
-        app.subTitle ? app.subTitle : 'SubTitle - Not found'
+        app.options.length > 0 ? 'Here are your options' : 'No Options'
     ),
     React.createElement(
         'ol',
@@ -94,4 +100,4 @@ var templateTwo = React.createElement(
 );
 
 // React Render DOM
-ReactDOM.render(templateTwo, appWraper);
+ReactDOM.render(template, appWraper);
