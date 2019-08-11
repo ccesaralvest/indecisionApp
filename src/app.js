@@ -1,17 +1,17 @@
 console.log("FIRST JSX");
 // JSX
 // Get Wraper Container
-var appWraper = document.getElementById('app');
+const appWraper = document.getElementById('app');
 
 // App Data Object
-var app = {
+const app = {
     title: 'Indecision App',
     subTitle: 'Put your life in the hands of a computer',
     options: ['one', 'two']
 };
 
 // First Template App
-var template = (
+const template = (
     <div>
         <h1>{app.title}</h1>
         {app.subTitle && <p>{app.subTitle}</p>}
@@ -24,14 +24,14 @@ var template = (
 );
 
 // Person Data Object
-var user = {
+const user = {
     name: 'Caio Timoteo',
     age: 18,
     location: 'Brazil'
 };
 
 // Template user
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>User Data</h1>
         <p><b>Name:</b> {user.name ? user.name : 'Not found'}</p>
