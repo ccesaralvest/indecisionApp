@@ -3,11 +3,21 @@ const carro = {
     marca: 'Chevrolet',
     year: [1990, 1991, 1992],
     getDataCar(){
-        console.log(`we have ${this.name} from ${this.marca} in some Years:`);
-        this.year.forEach((year) => {
-            console.log(year);
-        });
+        //goodWay// return this.year.map((year)=>`this is the ${this.name && this.name + '!'} ` + year);
+        const newArrayData = this.year.map((years) =>{
+            console.log('newArrayData' + years + '!')
+            return years;
+        })
+        return newArrayData;
     }
 }
+// console.log(carro.getDataCar());
 
-carro.getDataCar();
+const multiplier = {
+    numbers:[20, 30, 40],
+    multiplyBy(number){
+        const multiply = this.numbers.map((numbers) => number * numbers);
+        return multiply;
+    }
+}
+console.log(multiplier.multiplyBy(2));

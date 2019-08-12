@@ -5,11 +5,23 @@ var carro = {
     marca: 'Chevrolet',
     year: [1990, 1991, 1992],
     getDataCar: function getDataCar() {
-        console.log('we have ' + this.name + ' from ' + this.marca + ' in some Years:');
-        this.year.forEach(function (year) {
-            console.log(year);
+        //goodWay// return this.year.map((year)=>`this is the ${this.name && this.name + '!'} ` + year);
+        var newArrayData = this.year.map(function (years) {
+            console.log('newArrayData' + years + '!');
+            return years;
         });
+        return newArrayData;
     }
 };
+// console.log(carro.getDataCar());
 
-carro.getDataCar();
+var multiplier = {
+    numbers: [20, 30, 40],
+    multiplyBy: function multiplyBy(number) {
+        var multiply = this.numbers.map(function (numbers) {
+            return number * numbers;
+        });
+        return multiply;
+    }
+};
+console.log(multiplier.multiplyBy(2));
