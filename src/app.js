@@ -23,22 +23,32 @@ const template = (
     </div>
 );
 
-// Person Data Object
-const user = {
-    name: 'Caio Timoteo',
-    age: 18,
-    location: 'Brazil'
+
+// fazer um contador
+let count = 0;
+const addOne = () => {
+    count++;
+    renderCountApp();
+};
+const minusOne = () => {
+    count > 0 && count--;
+    renderCountApp();
+};
+const reset = () => {
+    count = 0;
+
+    renderCountApp();
 };
 
-// Template user
-const templateTwo = (
-    <div>
-        <h1>User Data</h1>
-        <p><b>Name:</b> {user.name ? user.name : 'Not found'}</p>
-        {(user.age && user.age >= 18) && <p><b>Age:</b> {user.age} </p>}
-        <p><b>Location:</b> {user.location ? user.location : 'Not Found'}</p>
-    </div>
-);
-
-// React Render DOM
-ReactDOM.render(template, appWraper);
+const renderCountApp = () =>{
+    const templateTwo = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>Reset</button>
+        </div>
+    );
+    ReactDOM.render(templateTwo, appWraper);
+};
+renderCountApp();

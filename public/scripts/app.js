@@ -1,27 +1,94 @@
 'use strict';
 
-var carro = {
-    name: 'Monza',
-    marca: 'Chevrolet',
-    year: [1990, 1991, 1992],
-    getDataCar: function getDataCar() {
-        //goodWay// return this.year.map((year)=>`this is the ${this.name && this.name + '!'} ` + year);
-        var newArrayData = this.year.map(function (years) {
-            console.log('newArrayData' + years + '!');
-            return years;
-        });
-        return newArrayData;
-    }
-};
-// console.log(carro.getDataCar());
+console.log("FIRST JSX");
+// JSX
+// Get Wraper Container
+var appWraper = document.getElementById('app');
 
-var multiplier = {
-    numbers: [20, 30, 40],
-    multiplyBy: function multiplyBy(number) {
-        var multiply = this.numbers.map(function (numbers) {
-            return number * numbers;
-        });
-        return multiply;
-    }
+// App Data Object
+var app = {
+    title: 'Indecision App',
+    subTitle: 'Put your life in the hands of a computer',
+    options: ['one', 'two']
 };
-console.log(multiplier.multiplyBy(2));
+
+// First Template App
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subTitle && React.createElement(
+        'p',
+        null,
+        app.subTitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No Options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item One'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item Two'
+        )
+    )
+);
+
+// fazer um contador
+var count = 0;
+var addOne = function addOne() {
+    count++;
+    renderCountApp();
+};
+var minusOne = function minusOne() {
+    count > 0 && count--;
+    renderCountApp();
+};
+var reset = function reset() {
+    count = 0;
+
+    renderCountApp();
+};
+
+var renderCountApp = function renderCountApp() {
+    var templateTwo = React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'h1',
+            null,
+            'Count: ',
+            count
+        ),
+        React.createElement(
+            'button',
+            { onClick: addOne },
+            '+1'
+        ),
+        React.createElement(
+            'button',
+            { onClick: minusOne },
+            '-1'
+        ),
+        React.createElement(
+            'button',
+            { onClick: reset },
+            'Reset'
+        )
+    );
+    ReactDOM.render(templateTwo, appWraper);
+};
+renderCountApp();
