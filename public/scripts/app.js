@@ -47,23 +47,22 @@ var template = React.createElement(
     )
 );
 
-// fazer um contador
+// Contador
 var count = 0;
 var addOne = function addOne() {
     count++;
-    renderCountApp();
+    renderCounterApp();
 };
 var minusOne = function minusOne() {
     count > 0 && count--;
-    renderCountApp();
+    renderCounterApp();
 };
 var reset = function reset() {
     count = 0;
-
-    renderCountApp();
+    renderCounterApp();
 };
 
-var renderCountApp = function renderCountApp() {
+var renderCounterApp = function renderCounterApp() {
     var templateTwo = React.createElement(
         'div',
         null,
@@ -86,9 +85,9 @@ var renderCountApp = function renderCountApp() {
         React.createElement(
             'button',
             { onClick: reset },
-            'Reset'
+            'reset'
         )
     );
     ReactDOM.render(templateTwo, appWraper);
 };
-renderCountApp();
+renderCounterApp();
