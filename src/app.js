@@ -24,6 +24,10 @@ const onRemoveAll = () => {
     app.options = [];
     render();
 };
+const onMakeDecision = () => {
+    const number = Math.floor(Math.random() * app.options.length);
+    alert(app.options[number]);
+};
 
 // First Template App
 const render = () => {
@@ -34,6 +38,7 @@ const render = () => {
             <p>{app.options.length > 0 ? 'Here are your options' : 'No Options'}</p>
             <p>{app.options.length}</p>
             <button onClick={onRemoveAll}>Remove All</button>
+            <button onClick={onMakeDecision}>Make a Decision</button>
             <ol>
                 {app.options.map((option) => <li key={option}>{option}</li>)}
             </ol>
