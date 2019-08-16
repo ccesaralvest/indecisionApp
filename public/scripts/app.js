@@ -1,45 +1,33 @@
 'use strict';
 
-var appWrapper = document.getElementById('app');
+var visibilidade = false;
 
-var buildVisible = {
-	title: 'Visibility Toggle',
-	contentText: ''
-};
-var hideDetails = function hideDetails() {
-	buildVisible.contentText = '';
-	renderBuildVisible();
-};
-var showDetails = function showDetails() {
-	buildVisible.contentText = 'Some Details';
-	renderBuildVisible();
+var mudaEstado = function mudaEstado() {
+	visibilidade = !visibilidade;
+	render();
 };
 
-var renderBuildVisible = function renderBuildVisible() {
-	var templatebuild = React.createElement(
+var render = function render() {
+	var jsx = React.createElement(
 		'div',
 		null,
 		React.createElement(
 			'h1',
 			null,
-			buildVisible.title
+			'Visibility Toggle'
 		),
-		buildVisible.contentText ? React.createElement(
+		React.createElement(
 			'button',
-			{ onClick: hideDetails },
-			'Hide details'
-		) : React.createElement(
-			'button',
-			{ onClick: showDetails },
-			'Show Details'
+			{ onClick: mudaEstado },
+			visibilidade ? 'Hide' : 'Show'
 		),
-		buildVisible.contentText && React.createElement(
+		visibilidade && React.createElement(
 			'p',
 			null,
-			buildVisible.contentText
+			'Detalhes'
 		)
 	);
-	ReactDOM.render(templatebuild, appWrapper);
+	ReactDOM.render(jsx, document.getElementById('app'));
 };
 
-renderBuildVisible();
+render();

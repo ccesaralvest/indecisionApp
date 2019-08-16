@@ -1,29 +1,19 @@
-const appWrapper = document.getElementById('app');
+let visibilidade = false;
 
-const buildVisible = {
-	title: 'Visibility Toggle',
-	contentText: ''
-};
-const hideDetails = () => {
-	buildVisible.contentText ='';
-	renderBuildVisible();
-};
-const showDetails = () => {
-	buildVisible.contentText ='Some Details';	
-	renderBuildVisible();
+const mudaEstado = () => {
+	visibilidade = !visibilidade;
+	render();
 };
 
-const renderBuildVisible = () => {
-	const templatebuild = (
+const render = () => {
+	const jsx = (
 		<div>
-			<h1>{buildVisible.title}</h1>			
-			{
-				buildVisible.contentText ? <button onClick={hideDetails}>Hide details</button> : <button onClick={showDetails}>Show Details</button> 
-			}
-			{buildVisible.contentText && <p>{buildVisible.contentText}</p>}
+			<h1>Visibility Toggle</h1>
+			<button onClick={mudaEstado}>{ visibilidade ? 'Hide' : 'Show'}</button>
+			{visibilidade && <p>Detalhes</p>}
 		</div>
 	);
-	ReactDOM.render(templatebuild, appWrapper);
+	ReactDOM.render(jsx, document.getElementById('app'));
 };
 
-renderBuildVisible();
+render();
