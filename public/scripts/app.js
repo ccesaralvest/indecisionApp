@@ -8,82 +8,57 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Count = function (_React$Component) {
-    _inherits(Count, _React$Component);
+var VisibilityToogle = function (_React$Component) {
+	_inherits(VisibilityToogle, _React$Component);
 
-    function Count(props) {
-        _classCallCheck(this, Count);
+	function VisibilityToogle(props) {
+		_classCallCheck(this, VisibilityToogle);
 
-        var _this = _possibleConstructorReturn(this, (Count.__proto__ || Object.getPrototypeOf(Count)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (VisibilityToogle.__proto__ || Object.getPrototypeOf(VisibilityToogle)).call(this, props));
 
-        _this.handleAddOne = _this.handleAddOne.bind(_this);
-        _this.handleMinusOne = _this.handleMinusOne.bind(_this);
-        _this.handleReset = _this.handleReset.bind(_this);
-        _this.state = {
-            count: 0
-        };
-        return _this;
-    }
+		_this.handleToggleVisibility = _this.handleToggleVisibility.bind(_this);
 
-    _createClass(Count, [{
-        key: 'handleAddOne',
-        value: function handleAddOne() {
-            this.setState(function (prevState) {
-                return {
-                    count: prevState.count + 1
-                };
-            });
-        }
-    }, {
-        key: 'handleMinusOne',
-        value: function handleMinusOne() {
-            this.setState(function (prevState) {
-                return {
-                    count: prevState.count - 1
-                };
-            });
-        }
-    }, {
-        key: 'handleReset',
-        value: function handleReset() {
-            this.setState(function () {
-                return {
-                    count: 0
-                };
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return React.createElement(
-                'div',
-                null,
-                React.createElement(
-                    'h1',
-                    null,
-                    'Count: ',
-                    this.state.count
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleAddOne },
-                    '+1'
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleMinusOne },
-                    '-1'
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleReset },
-                    'Reset'
-                )
-            );
-        }
-    }]);
+		_this.state = {
+			visibility: false
+		};
+		return _this;
+	}
 
-    return Count;
+	_createClass(VisibilityToogle, [{
+		key: 'handleToggleVisibility',
+		value: function handleToggleVisibility() {
+			this.setState(function (prevState) {
+				return {
+					visibility: !prevState.visibility
+				};
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h1',
+					null,
+					'Make it Visible'
+				),
+				React.createElement(
+					'button',
+					{ onClick: this.handleToggleVisibility },
+					this.state.visibility ? 'Hide' : 'Show'
+				),
+				this.state.visibility && React.createElement(
+					'p',
+					null,
+					'Some text'
+				)
+			);
+		}
+	}]);
+
+	return VisibilityToogle;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Count, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(VisibilityToogle, null), document.getElementById('app'));
