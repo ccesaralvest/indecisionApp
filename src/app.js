@@ -14,7 +14,7 @@ class IndesicionApp extends React.Component {
         );
     }
 };
-
+ 
 class Action extends React.Component {
     handlePick(){
         alert('handlePick');
@@ -39,8 +39,13 @@ class Header extends React.Component {
 };
 
 class Options extends React.Component {
+    constructor(props){
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+
     handleRemoveAll(){
-        alert('Remove');
+        alert('Remove'); 
     }
 
     render(){
@@ -48,7 +53,7 @@ class Options extends React.Component {
             <div>
                 <button onClick={this.handleRemoveAll}>Remove All</button>
                 {
-                    this.props.options.map((option) => <Option key={option} option={option}  />)
+                    this.props.options.map((option) => <Option key={option} option={option} />)
                 }
             </div>
         )
@@ -78,6 +83,5 @@ class AddOption extends React.Component {
         );
     }
 };
-
 
 ReactDOM.render(<IndesicionApp />, document.getElementById('app'));
