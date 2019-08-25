@@ -5,7 +5,7 @@ class Count extends React.Component {
         this.handleMinusOne = this.handleMinusOne.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.state = {
-            count: 0
+            count: props.count
         };
     }
 
@@ -44,4 +44,8 @@ class Count extends React.Component {
         );
     }
 }
-ReactDOM.render(<Count />, document.getElementById('app'));
+Count.defaultProps = {
+    count: 0
+}
+
+ReactDOM.render(<Count count={100}/>, document.getElementById('app'));
