@@ -5,20 +5,33 @@ import Action from './Action';
 import Options from './Options';
 
 export default class IndecisionApp extends React.Component {
-	constructor(props){
-		super(props);
-		
-		this.state = {
-			title: 'IndecisionApp',
-			subTitle: 'Put your life in a computer hands',
-			options: []
-        }
-        
-		this.handleRemoveAll = this.handleRemoveAll.bind(this);
-		this.handlePick = this.handlePick.bind(this);
-		this.handleAddOption = this.handleAddOption.bind(this);
-		this.handleDeleteOption = this.handleDeleteOption.bind(this);
+	state = {
+		title: 'IndecisionApp',
+		subTitle: 'Put your life in a computer hands',
+		options: []
+    }
+
+    handleRemoveAll = () => {this.setState(() => ({options:[]}));}
+	handleDeleteOption = (optionToRemove) => {
+		this.setState((prevState) => ({
+			options: prevState.options.filter((option) => {
+				return optionToRemove !== option;
+			})
+		})); 
 	}
+	handlePick = () => {
+		const numberRandom = Math.floor(Math.random() * this.state.options.length)
+		alert(this.state.options[numberRandom]);
+	}
+	handleAddOption = (option) => {
+		if(!option) {
+			return 'Insert some option'
+		} else if ( this.state.options.indexOf(option) > -1) {
+			return 'This option alredy exist'
+		}
+		this.setState((prevState) => ({options: prevState.options.concat([option])}))
+	}
+
 	componentDidMount(){
 		try {
 			const json = localStorage.getItem('options');
@@ -35,28 +48,6 @@ export default class IndecisionApp extends React.Component {
 			const json = JSON.stringify(this.state.options);
 			localStorage.setItem('options', json)
 		}
-	}
-	handleRemoveAll(){
-		this.setState(() => ({options:[]}));
-	}
-	handleDeleteOption(optionToRemove){
-		this.setState((prevState) => ({
-			options: prevState.options.filter((option) => {
-				return optionToRemove !== option;
-			})
-		})); 
-	}
-	handlePick(){
-		const numberRandom = Math.floor(Math.random() * this.state.options.length)
-		alert(this.state.options[numberRandom]);
-	}
-	handleAddOption(option){
-		if(!option) {
-			return 'Insert some option'
-		} else if ( this.state.options.indexOf(option) > -1) {
-			return 'This option alredy exist'
-		}
-		this.setState((prevState) => ({options: prevState.options.concat([option])}))
 	}
 	render(){
 		return (
