@@ -1,7 +1,5 @@
-import isSenior, { isAdult, canDrink } from './person.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(isAdult(18));
-console.log(canDrink(19));
-console.log(isSenior(64));
-
-console.log("App's Running!!!!"); 
+const template = <p>REACT</p>;
+ReactDOM.render(template, document.getElementById('app'));
