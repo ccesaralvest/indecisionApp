@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Action = (props) => {
-	return (
-		<button disabled={!props.hasOption} onClick={props.handlePick}>What should i do ?</button>
-	)
-};
+const Action = (props) => (
+	<button 
+		disabled={!props.hasOption}
+		onClick={props.handlePick}
+		className='big-buttom'
+		>
+		What should i do ?
+		</button>
+);
 
 export default Action;
